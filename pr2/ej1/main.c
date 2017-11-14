@@ -5,24 +5,34 @@
 #include <unistd.h>
 
 
-void* msg(int a)
+void* msg(char* a)
 {
 	//printf("%s\n",text);
-	printf("test: %i\n",a );
-	usleep (1000000);
-	exit (0);
+	for (int i = 0; i < strlen(a); ++i)
+	{
+		printf("%c\n",a[i] );
+		usleep(30000);
+	}
+	//printf("test: %s\n",a );
+	printf("\n");
+	//pthread_exit (0);
 }
 
 int main(int argc, char const *argv[])
 {
 	printf("testerino\n");
 	
-	int a;
+	char* a="hola ";
+	char* b="mundo";
 
-	pthread_t tid[3];
 
-	pthread_create(&tid[0],NULL,(void*)msg,&a);
-	pthread_join(tid[0],NULL);
+	pthread_t tida;
+	pthread_t tidb;
+
+	pthread_create(&tida,NULL,(void*)msg,a);
+	pthread_join(tida,NULL);
+	pthread_create(&tidb,NULL,(void*)msg,b);
+	pthread_join(tidb,NULL);
 
 
 	return 0;
