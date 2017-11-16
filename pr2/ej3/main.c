@@ -20,6 +20,7 @@ void* sum_threads(void* parametros)
 	struct param_sum*param=(struct param_sum*)parametros;
 	int *sum=(int*)malloc(sizeof(int));
 	*sum=0;
+	
 	while (lock);
 
 	for (int i = 0; i < LONG_VECT; ++i){
@@ -54,7 +55,7 @@ int main(int argc, char const *argv[])
 		pthread_create(&tid[i],NULL,sum_threads,(void*)parametros);
 	}
 
-	//thread sum asign
+	//thread sum asign while threads copy the struct
 	for (int i = 0; i < LONG_VECT; ++i){
 		parametros->tid_s[i]=tid[i%nthreads];
 	}
