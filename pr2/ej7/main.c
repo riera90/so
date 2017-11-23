@@ -25,8 +25,8 @@ void* modificar_clentes(void* parametros){
 		printf("bloqueado\n");
 	}
 	camisetas[posicion_clientes]-=*(int*)parametros;
-	posicion_clientes++;
-
+	(posicion_clientes++)%N_MODELOS;
+	
 	pthread_mutex_unlock(&lock);
 }
 
