@@ -13,27 +13,37 @@ int main(int argc, char const *argv[]) {
 
   cpu=poweron(cpu);
 
-  if (create_process(cpu,argv[1],5,5,5)) {
+  if (create_process(cpu,"pr1",5)) {
     printf("ok\n");
   }
-  if (create_process(cpu,argv[1],6,6,6)) {
+  if (create_process(cpu,"pr2",6)) {
     printf("ok\n");
   }
 
-  process=get_next_process(cpu);
-  printf("%i\n", process->length);
+
+  printf("%i\n", process->pid);
 
   printf("---------\n");
-
-  roll_queue(cpu);
+  cpu->active_process[0]=cpu->active_process[1];
+  //roll_queue(cpu);
   //pop_process(cpu);
 
-  process=get_next_process(cpu);
-  printf("%i\n", process->length );
+  process=&cpu->active_process[0];
+  printf("%i\n", process->pid );
 
   printf("\n");
 
   poweroff(cpu);
+
+  printf("---------\n");
+
+
+  struct Cpu *cpu2;
+  cpu2=poweron(cpu2);
+
+  FCFS(cpu2);
+
+  poweroff(cpu2);
 
 
   return 0;

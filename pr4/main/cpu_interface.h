@@ -16,16 +16,18 @@ struct Cpu{
   int cicle;
   int* queue;
   struct Process *active_process;
-  bool* active_process_in_use;
+  bool* pid_in_use;
   bool in_use;
 };
 
 struct Process{
   unsigned int pid;
-  const char* name;
-  unsigned int length;
+  char* name;
+  int length;
   unsigned int total_time;
   unsigned int arrival_time;
+  int cpu_time;
+  bool in_use;
 };
 
 struct Cpu* poweron(struct Cpu *cpu);
@@ -33,7 +35,7 @@ struct Cpu* poweron(struct Cpu *cpu);
 void poweroff(struct Cpu *cpu);
   //free the memory
 
-bool create_process(struct Cpu* cpu,const char* _name, int _length, int _total_time, int _arrival_time);
+bool create_process(struct Cpu* cpu, char* _name, int _length);
 unsigned int get_new_pid(struct Cpu *cpu);
   //gets a free pid
 
