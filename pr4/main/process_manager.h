@@ -6,6 +6,8 @@
 #include "cpu_interface.h"
 
 #define MAX_LENGHT 99
+#define TOP_CICLE 30
+#define CUANTO 3
 
 struct Finish{
   struct Process process;

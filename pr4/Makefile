@@ -55,7 +55,7 @@ FLAGS :=$(addprefix -,$(COMPILATION_FLAGS))
 ifeq ($(EXECUTE_AFTER_COMPILATION), YES)
 execute : $(OUTPUT_DIR)$(OUTPUT_NAME)
 ifeq ($(EXECUTION_DATA), SIMPLE)
-	time "$(OUTPUT_DIR)$(OUTPUT_NAME).out" pr1 5 1
+	time "$(OUTPUT_DIR)$(OUTPUT_NAME).out"
 #pr2 10 2 pr3 15 10
 endif
 ifeq ($(EXECUTION_DATA), COMPLETE)

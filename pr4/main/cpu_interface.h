@@ -8,7 +8,6 @@
 #define false 0
 
 #define MAX_PROCESS 10
-#define CUANTO 5
 #define EMPTY -1
 
 

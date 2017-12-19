@@ -14,7 +14,7 @@ struct Cpu* poweron(struct Cpu *cpu){
   for (int i = 0; i < MAX_PROCESS; i++) {
     cpu->pid_in_use[i]=false;
     cpu->queue[i]=EMPTY;
-    cpu->active_process=(struct Process*)malloc(sizeof(struct Process)*MAX_PROCESS);
+    cpu->active_process[i].in_use=false;
       //allocates the process memory
   }
 
@@ -49,7 +49,6 @@ bool create_process(struct Cpu* cpu, char* _name, int _length){
 unsigned int get_new_pid(struct Cpu *cpu){
   for (int i = 0; i < MAX_PROCESS; i++) {
     if (cpu->pid_in_use[i]==false) {
-      printf("--------test%i\n",i );
       cpu->pid_in_use[i]=true;
       return i;
     }
@@ -98,4 +97,8 @@ bool roll_queue(struct Cpu* cpu){
     cpu->active_process[i]=cpu->active_process[i+1];
   }
   cpu->active_process[MAX_PROCESS-1]=temp;
+
+  if (cpu->active_process[0].in_use==false) {
+    roll_queue(cpu);
+  }
 }
