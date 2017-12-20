@@ -4,7 +4,7 @@
 void FCFS(struct Cpu* cpu){
   int pid_aux;
   int* finished_pid_asociation=(int*)malloc(sizeof(int)*MAX_PROCESS);
-  struct Finish* finished=(struct Process*)malloc(sizeof(struct Process)*MAX_PROCESS);
+  struct Finish* finished=(struct Finish*)malloc(sizeof(struct Finish)*MAX_PROCESS);
   for (int i = 0; i < MAX_PROCESS; i++) {
     finished->in_use=false;
     finished_pid_asociation[i]=-1;
@@ -82,7 +82,7 @@ void FCFS(struct Cpu* cpu){
 void SJF(struct Cpu* cpu){
   int pid_aux;
   int* finished_pid_asociation=(int*)malloc(sizeof(int)*MAX_PROCESS);
-  struct Finish* finished=(struct Process*)malloc(sizeof(struct Process)*MAX_PROCESS);
+  struct Finish* finished=(struct Finish*)malloc(sizeof(struct Finish)*MAX_PROCESS);
   for (int i = 0; i < MAX_PROCESS; i++) {
     finished->in_use=false;
     finished_pid_asociation[i]=-1;
@@ -190,7 +190,7 @@ void Round_Robin(struct Cpu* cpu){
   int pid_aux;
   int _cuanto=0;
   int* finished_pid_asociation=(int*)malloc(sizeof(int)*MAX_PROCESS);
-  struct Finish* finished=(struct Process*)malloc(sizeof(struct Process)*MAX_PROCESS);
+  struct Finish* finished=(struct Finish*)malloc(sizeof(struct Finish)*MAX_PROCESS);
   for (int i = 0; i < MAX_PROCESS; i++) {
     finished->in_use=false;
     finished_pid_asociation[i]=-1;

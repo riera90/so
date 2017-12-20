@@ -23,10 +23,10 @@ EXECUTION_DATA=SIMPLE
 	# [SIMPLE/COMPLETE(generate a more vervose file)]
 		# todo complete does not works
 COMPILATION_FLAGS=Wpedantic
-	#the binary compilation flags
+	#the binary compilation flags without the "-"
 #############################################################
 # the previous configuration compiles the following tree
-# ./$(COMPILER) -c $^
+# ./
 #  ├main/
 #  │ ├main.cc
 #  │ ├foo.cc
@@ -56,7 +56,6 @@ ifeq ($(EXECUTE_AFTER_COMPILATION), YES)
 execute : $(OUTPUT_DIR)$(OUTPUT_NAME)
 ifeq ($(EXECUTION_DATA), SIMPLE)
 	time "$(OUTPUT_DIR)$(OUTPUT_NAME).out"
-#pr2 10 2 pr3 15 10
 endif
 ifeq ($(EXECUTION_DATA), COMPLETE)
 	@echo WIP, try EXECUTION_DATA as simple
@@ -84,5 +83,27 @@ $(LIB_DIR)$(LIB_NAME).a: $(OBJ_FILES_W_ROUTE)
 clean:
 	rm -f $(OUTPUT_DIR)*.out $(OBJ_DIR)*.o $(LIB_DIR)*.a
 
-cl:
-	rm -f $(OUTPUT_DIR)*.out $(OBJ_DIR)*.o $(LIB_DIR)*.a
+
+help:
+	#                            _                        _         __ _ _
+	#                           (_)                      | |       / _(_) |
+	#  __ _  ___ _ __   ___ _ __ _  ___   _ __ ___   __ _| | _____| |_ _| | ___
+	# / _` |/ _ \ '_ \ / _ \ '__| |/ __| | '_ ` _ \ / _` | |/ / _ \  _| | |/ _ \.
+	#| (_| |  __/ | | |  __/ |  | | (__  | | | | | | (_| |   <  __/ | | | |  __/
+	# \__, |\___|_| |_|\___|_|  |_|\___| |_| |_| |_|\__,_|_|\_\___|_| |_|_|\___|
+	#  __/ |
+	# |___/                                                           by riera90.
+	#
+	## Implementation
+	# 	git clone git@github.com:riera90/generic-makefile.git
+	# 	cd greneric-makefile
+	# 	mv * <working directory>
+	# 	cd <working directory>
+	#
+	# Configure the variables.
+	# 	make
+	#
+	# And enjoy the binaries!
+	#
+	# For a more extense manual refer to README.md
+	#
