@@ -3,9 +3,25 @@
 struct Cpu* poweron(struct Cpu *cpu){
   //allocates all the memory
   cpu=(struct Cpu*)malloc(sizeof(struct Cpu));
+    if (cpu==NULL) {
+      printf("MEMORY ERROR!\n");
+      return 1;
+    }
   cpu->queue=(int*)malloc(sizeof(int)*MAX_PROCESS);
+    if (cpu->queue==NULL) {
+      printf("MEMORY ERROR!\n");
+      return 2;
+    }
   cpu->active_process=(struct Process*)malloc(sizeof(struct Process)*MAX_PROCESS);
+    if (cpu->active_process==NULL) {
+      printf("MEMORY ERROR!\n");
+      return 3;
+    }
   cpu->pid_in_use=(bool*)malloc(sizeof(bool)*MAX_PROCESS);
+    if (cpu->pid_in_use==NULL) {
+      printf("MEMORY ERROR!\n");
+      return 4;
+    }
 
   //prepare the necesary memory to the start configuration
   struct Process* temp;
@@ -15,7 +31,6 @@ struct Cpu* poweron(struct Cpu *cpu){
     cpu->pid_in_use[i]=false;
     cpu->queue[i]=EMPTY;
     cpu->active_process[i].in_use=false;
-      //allocates the process memory
   }
 
   return cpu;
@@ -78,7 +93,7 @@ struct Process* get_next_process(struct Cpu *cpu){
 
 
 struct Process* pop_process(struct Cpu *cpu){
-  // cant decoment becouse the process needs to be unique to the process manager recolector, if the recolector un unabled, feel free to decoment this, as it will make the program more efficient
+  // cant decoment becouse the process id needs to be unique to the process manager recolector, if the recolector is unabled, feel free to decoment this, as it will make the program more efficient
   //this make the program only able to get as many programs as MAX_PROCESS even if they finish
   //cpu->pid_in_use[cpu->active_process[0].pid]=false;
   struct Process* temp=(struct Process*)malloc(sizeof(struct Process));

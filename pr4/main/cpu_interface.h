@@ -2,6 +2,7 @@
 #define _CPU_INTERFACE_H_
 
 #include <stdlib.h>
+#include <stdio.h>
 
 #define bool int
 #define true 1
